@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
 
     private int slots;
     private Transform[] slot;
+    public int itemsPickedUp = 0;
 
     private GameObject itemPickedUp;
     private bool itemAdded;
@@ -56,6 +57,7 @@ public class Inventory : MonoBehaviour
             itemPickedUp = other.gameObject;
             print(itemPickedUp.name);
             AddItem(itemPickedUp);
+            itemsPickedUp++;
         }
     }
 
@@ -80,7 +82,7 @@ public class Inventory : MonoBehaviour
                 item.transform.position = itemManager.transform.position;
                 if (item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = false;
-
+                item.SetActive(false);
                 Destroy(item.GetComponent<Rigidbody>());
                 itemAdded = true;
             }

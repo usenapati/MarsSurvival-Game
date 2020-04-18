@@ -57,6 +57,13 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 player.GetComponent<Player>().Drink(thisItem.decreaseRate);
                 Destroy(item);
             }
+
+            if (thisItem.type == "Level1")
+            {
+                player.GetComponent<Player>().Heal(10);
+                Destroy(item);
+                item.SetActive(false);
+            }
         }
     }
 }
